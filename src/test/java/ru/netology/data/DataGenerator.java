@@ -69,9 +69,34 @@ public class DataGenerator {
             sendRequest(registrationInfo);
             return registrationInfo;
         }
+        public static RegistrationInfo shouldGetFailLogin() {
+            String password = randomPassword();
+            RegistrationInfo registrationInfo = new RegistrationInfo(
+                    randomLogin(),
+                    password,
+                    "active");
+            sendRequest(registrationInfo);
+            return new RegistrationInfo(
+                    randomLogin(),
+                    password,
+                    "active");
+        }
 
+        public static RegistrationInfo shouldGetFailPassword() {
+            String login = randomLogin();
+            RegistrationInfo registrationInfo = new RegistrationInfo(
+                    login,
+                    randomPassword(),
+                    "active");
+            sendRequest(registrationInfo);
+            return new RegistrationInfo(
+                    login,
+                    randomPassword(),
+                    "active");
+        }
 
     }
+
 }
 
 
